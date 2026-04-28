@@ -1,0 +1,180 @@
+.post-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.post-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.author-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+.author-role {
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.role-admin {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.role-curator {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.role-participant {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.post-date {
+  color: #888;
+  font-size: 13px;
+}
+
+.btn-edit-post,
+.btn-delete-post {
+  background: #f0f0f0;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.btn-edit-post:hover {
+  background: #dbeafe;
+}
+
+.btn-delete-post:hover {
+  background: #fecaca;
+}
+
+.post-title {
+  margin: 0;
+  padding: 0 24px 16px;
+  font-size: 20px;
+  color: #333;
+}
+
+.post-content {
+  margin: 0;
+  padding: 0 24px 20px;
+  color: #555;
+  line-height: 1.7;
+  font-size: 15px;
+  white-space: pre-wrap;
+}
+
+.post-gallery {
+  position: relative;
+  background: #000;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-gallery img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.2s;
+  z-index: 10;
+}
+
+.gallery-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.gallery-btn.prev {
+  left: 12px;
+}
+
+.gallery-btn.next {
+  right: 12px;
+}
+
+.gallery-indicators {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.indicator.active {
+  background: white;
+  transform: scale(1.2);
+}

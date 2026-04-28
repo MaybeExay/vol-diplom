@@ -1,0 +1,90 @@
+.participants-modal {
+  max-width: 500px;
+}
+
+.participants-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.participant-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.participant-item:hover {
+  background: #f8f8f8;
+}
+
+.participant-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.participant-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.participant-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 15px;
+}
+
+.participant-email {
+  color: #888;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.participant-role {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.role-admin {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.role-curator {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.role-participant {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.empty-participants {
+  padding: 40px 24px;
+  text-align: center;
+  color: #888;
+}

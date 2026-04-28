@@ -1,0 +1,156 @@
+.event-card {
+  display: block;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.event-card.past {
+  opacity: 0.85;
+  background: #fafafa;
+}
+
+.event-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-image-placeholder {
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  position: relative;
+}
+
+.past-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #dc2626;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.event-content {
+  padding: 20px;
+}
+
+.event-content h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  color: #333;
+}
+
+.event-description {
+  margin: 0 0 16px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.event-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #888;
+}
+
+.participant-count {
+  background: #f0f0f0;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* Compact card for sidebar */
+.event-card-compact {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 12px;
+}
+
+.event-card-compact:hover {
+  background: #f8f8f8;
+  transform: translateX(4px);
+}
+
+.event-card-compact.past {
+  opacity: 0.75;
+  background: #fafafa;
+}
+
+.event-image-compact {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.event-image-compact img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-info-compact {
+  flex: 1;
+  min-width: 0;
+}
+
+.event-info-compact h4 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.event-info-compact .event-date {
+  margin: 0;
+  font-size: 12px;
+  color: #888;
+}
+
+.event-card-compact .past-badge {
+  position: static;
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 8px;
+  font-size: 11px;
+}
