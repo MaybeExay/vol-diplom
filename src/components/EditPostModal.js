@@ -16,6 +16,7 @@ const EditPostModal = ({ post, onClose, onUpdated }) => {
       return [];
     }
   });
+  const [removedImages, setRemovedImages] = useState([]); // Отслеживаем удаленные
   const [previews, setPreviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -23,7 +24,7 @@ const EditPostModal = ({ post, onClose, onUpdated }) => {
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
     const remainingSlots = 3 - existingImages.length - images.length;
-
+    
     if (files.length > remainingSlots) {
       setError('Можно загрузить максимум 3 изображения');
       return;
@@ -57,6 +58,8 @@ const EditPostModal = ({ post, onClose, onUpdated }) => {
   };
 
   const removeExistingImage = (index) => {
+    const imageToRemove = existingImages[index];
+    setRemovedImages([...removedImages, imageToRemove]); // ✅ Сохраняем для удаления
     setExistingImages(existingImages.filter((_, i) => i !== index));
   };
 
@@ -70,6 +73,11 @@ const EditPostModal = ({ post, onClose, onUpdated }) => {
       formDataToSend.append('title', formData.title);
       formDataToSend.append('content', formData.content);
       formDataToSend.append('existingImages', JSON.stringify(existingImages));
+      
+      //  Отправляем список удаленных изображений
+      if (removedImages.length > 0) {
+        formDataToSend.append('removeImages', JSON.stringify(removedImages));
+      }
 
       images.forEach((file) => {
         formDataToSend.append('images', file);
@@ -94,7 +102,7 @@ const EditPostModal = ({ post, onClose, onUpdated }) => {
           <h2>Редактировать пост</h2>
           <button className="modal-close" onClick={onClose}>×</button>
         </div>
-
+        
         {error && <div className="error-message">{error}</div>}
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">

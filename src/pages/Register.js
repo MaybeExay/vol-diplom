@@ -13,12 +13,20 @@ const Register = () => {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  
   const { register } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+
+    if (!privacyAccepted) {
+      setError('Необходимо принять политику конфиденциальности');
+      return;
+    }
 
     if (formData.password !== formData.confirmPassword) {
       setError('Пароли не совпадают');
@@ -45,6 +53,11 @@ const Register = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handlePrivacyAccept = () => {
+    setPrivacyAccepted(true);
+    setShowPrivacyModal(false);
   };
 
   return (
@@ -102,7 +115,31 @@ const Register = () => {
               placeholder="••••••••"
             />
           </div>
-          <button type="submit" className="btn-primary" disabled={loading}>
+          
+          <div className="privacy-checkbox">
+            <input
+              type="checkbox"
+              id="privacy"
+              checked={privacyAccepted}
+              onChange={(e) => setPrivacyAccepted(e.target.checked)}
+              disabled
+            />
+            <label htmlFor="privacy">
+              Я принимаю{' '}
+              <span 
+                className="privacy-link"
+                onClick={() => setShowPrivacyModal(true)}
+              >
+                политику конфиденциальности
+              </span>
+            </label>
+          </div>
+
+          <button 
+            type="submit" 
+            className="btn-primary" 
+            disabled={loading || !privacyAccepted}
+          >
             {loading ? 'Регистрация...' : 'Зарегистрироваться'}
           </button>
         </form>
@@ -110,6 +147,38 @@ const Register = () => {
           Уже есть аккаунт? <Link to="/login">Войти</Link>
         </p>
       </div>
+
+      {showPrivacyModal && (
+        <div 
+          className="modal-overlay"
+          onClick={() => setShowPrivacyModal(false)}
+        >
+          <div 
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2>Политика конфиденциальности</h2>
+            <div className="modal-body">
+              <p>Здесь будет текст политики конфиденциальности...</p>
+              <p>Добавить сюда полный текст документа по условиям предприятия.</p>
+              <p>Временный заменитель</p>
+              <p>Временный заменитель</p>
+              <p>Временный заменитель</p>
+              <p>Временный заменитель</p>
+            </div>
+            <div className="modal-footer">
+              <label className="modal-checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={privacyAccepted}
+                  onChange={handlePrivacyAccept}
+                />
+                <span>Я принимаю условия политики конфиденциальности</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
